@@ -106,14 +106,14 @@ public class UserDAO {
     /**
      * Update user
      */
-    public void updateUser(int id, String name, String email) throws SQLException {
+    public void updateUser(User user) throws SQLException {
         String sql = "UPDATE users SET name = ?, email = ? WHERE id = ?";
         
         try (Connection conn = dbConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, name);
-            pstmt.setString(2, email);
-            pstmt.setInt(3, id);
+            pstmt.setString(1, user.getName());
+            pstmt.setString(2, user.getEmail());
+            pstmt.setInt(3, user.getId());
             int rowsAffected = pstmt.executeUpdate();
             System.out.println("Updated " + rowsAffected + " row(s)");
         }

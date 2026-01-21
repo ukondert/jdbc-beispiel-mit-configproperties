@@ -85,7 +85,7 @@ classDiagram
         +insertUser(User newUser)
         +getAllUsers() List<User>
         +getUserById(int id) User
-        +updateUser(int id, String name, String email) void
+        +updateUser(User user) void
         +deleteUser(int id) void
     }
 
