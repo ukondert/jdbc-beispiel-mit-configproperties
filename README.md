@@ -82,8 +82,7 @@ classDiagram
         -DatabaseConnection dbConnection
         +UserDAO(DatabaseConnection dbConnection)
         +createTable() void
-        +insertUser(String name, String email) void
-        +insertUser(String name, String email) User
+        +insertUser(User newUser)
         +getAllUsers() List<User>
         +getUserById(int id) User
         +updateUser(int id, String name, String email) void

@@ -32,24 +32,9 @@ public class UserDAO {
     }
 
     /**
-     * Insert a new user
+     * Insert a new user setting the generated ID from the database
      */
-    public void insertUser(String name, String email) throws SQLException {
-        String sql = "INSERT INTO users (name, email) VALUES (?, ?)";
-        
-        try (Connection conn = dbConnection.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, name);
-            pstmt.setString(2, email);
-            int rowsAffected = pstmt.executeUpdate();
-            System.out.println("Inserted " + rowsAffected + " row(s)");
-        }
-    }
-
-    /**
-     * Insert a new user and return the User object with the generated ID
-     */
-    public User insertUser(User user) throws SQLException {
+    public void insertUser(User user) throws SQLException {
         String sql = "INSERT INTO users (name, email) VALUES (?, ?)";
 
         try (Connection conn = dbConnection.getConnection();
@@ -70,9 +55,6 @@ public class UserDAO {
                 }
             }
         }
-
-        System.out.println("Inserted user with ID: " + user.getId());
-        return user;
     }
 
     /**
